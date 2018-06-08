@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.mensagem</h2>
+@{string returnControler = @ViewBag.controller;}
+@using (Html.BeginForm("Index", returnControler, FormMethod.Post))
+{
+    <button class="lb btn btn-primary">Voltar</button>
+}

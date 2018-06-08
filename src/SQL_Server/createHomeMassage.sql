@@ -46,3 +46,6 @@ CREATE TABLE Servico (
 	CONSTRAINT FK_Massagem		FOREIGN KEY (Massagem)		REFERENCES Massagem(Id_Massagem) ON UPDATE CASCADE
 );
 
+CREATE LOGIN Zen WITH PASSWORD = 'Zen'; 
+CREATE USER ZenUser FOR LOGIN Zen; 
+GRANT SELECT ON HomeMassage.dbo.Cliente TO ZenUser;
