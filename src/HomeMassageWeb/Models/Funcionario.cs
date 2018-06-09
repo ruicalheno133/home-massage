@@ -36,6 +36,9 @@ namespace HomeMassageWeb.Models
 
         public bool Estado { get; set; }
 
+        [StringLength(60)]
+        public string Role { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servico> Servicoes { get; set; }
     }

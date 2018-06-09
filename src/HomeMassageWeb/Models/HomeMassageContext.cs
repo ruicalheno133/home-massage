@@ -66,6 +66,10 @@ namespace HomeMassageWeb.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Funcionario>()
+                .Property(e => e.Role)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Funcionario>()
                 .HasMany(e => e.Servicoes)
                 .WithRequired(e => e.Funcionario1)
                 .HasForeignKey(e => e.Funcionario)

@@ -3,7 +3,8 @@
     ViewBag.image = 1;
 }
 
-<h1>@ViewBag.NomeCliente</h1>
+<h1>@ViewBag.Id</h1>
+@Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Cliente")
 
 <div style="margin-top:5px;">
     <form method="post" action="/Cliente/AdicionarCliente" role="login">
@@ -25,21 +26,21 @@
                 </div>
             </div>
             <div class="column" style="margin-top:30px;">
-                    <div>
-                        <input type="radio" name="massagem" checked>RELAXANTE
-                    </div>
-                    <div>
-                        <input type="radio" name="massagem">PROFUNDA
-                    </div>
-                    <div>
-                        <input type="radio" name="massagem">SUECA
-                    </div>
-                    <div>
-                        <input type="radio" name="massagem">DESPORTIVA
-                    </div>
-                    <div>
-                        <input type="radio" name="massagem">PRÉ-NATAL
-                    </div>
+                <div>
+                    <input type="radio" name="massagem" checked>RELAXANTE
+                </div>
+                <div>
+                    <input type="radio" name="massagem">PROFUNDA
+                </div>
+                <div>
+                    <input type="radio" name="massagem">SUECA
+                </div>
+                <div>
+                    <input type="radio" name="massagem">DESPORTIVA
+                </div>
+                <div>
+                    <input type="radio" name="massagem">PRÉ-NATAL
+                </div>
             </div>
         </div>
         <center>

@@ -15,7 +15,7 @@ namespace HomeMassageWeb.Controllers
             HttpCookie authCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
             FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
 
-            ViewBag.NomeCliente = authCookie.Name;
+            ViewBag.Id = authTicket.Name;
             ViewBag.Title = "Requisitar Massagem";
             ViewBag.Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm").Replace(' ', 'T');
             return View();

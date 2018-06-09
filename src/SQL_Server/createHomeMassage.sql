@@ -18,6 +18,7 @@ CREATE TABLE Funcionario (
 	Nome			VARCHAR(50) NOT NULL,
 	Email			VARCHAR(50) NOT NULL UNIQUE,
 	Estado			BIT NOT NULL,
+	Role            VARCHAR (60) DEFAULT 'employee' NULL,
 	CONSTRAINT PK_Funcionario PRIMARY KEY (Id_Funcionario)
 );
 
@@ -27,7 +28,7 @@ CREATE TABLE Massagem (
 	Preco			MONEY NOT NULL,
 	Duracao			INT NOT NULL,
 	Descricao		VARCHAR(250) NOT NULL,
-	Imagem			IMAGE NOT NULL,
+	Imagem			IMAGE,
 	CONSTRAINT PK_Massagem PRIMARY KEY (Id_Massagem)
 );
 
@@ -46,7 +47,3 @@ CREATE TABLE Servico (
 	CONSTRAINT FK_Funcionario	FOREIGN KEY (Funcionario)	REFERENCES Funcionario(Id_Funcionario) ON UPDATE CASCADE,
 	CONSTRAINT FK_Massagem		FOREIGN KEY (Massagem)		REFERENCES Massagem(Id_Massagem) ON UPDATE CASCADE
 );
-
-CREATE LOGIN Zen WITH PASSWORD = 'Zen'; 
-CREATE USER ZenUser FOR LOGIN Zen; 
-GRANT SELECT ON HomeMassage.dbo.Cliente TO ZenUser;
