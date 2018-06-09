@@ -25,8 +25,8 @@ namespace HomeMassageWeb.Controllers
             if (ModelState.IsValid)
             {
                 var clientes = (from m in db.Clientes
-                               where m.Username == Username
-                               select m);
+                                where m.Username == Username
+                                select m);
 
                 if (clientes.ToList<Cliente>().Count > 0)
                 {
@@ -35,8 +35,9 @@ namespace HomeMassageWeb.Controllers
                     {
                         if (MyHelpers.VerifyMd5Hash(md5Hash, Password, cliente.Password))
                         {
-                            HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(cliente.Id_Cliente.ToString(), cliente.Role);
+                            HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(cliente.Username, cliente.Role);
                             Response.Cookies.Add(cookie);
+                            return RedirectToAction("PaginaInicial", "Cliente");
                         }
                         else
                         {
@@ -45,21 +46,16 @@ namespace HomeMassageWeb.Controllers
                         }
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Endereço de email incorreto!");
-                    return View("Index");
-
-                }
             }
-            return RedirectToAction("index");
+            ModelState.AddModelError("", "Endereço de email incorreto!");
+            return View("Index");
         }
 
 
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult sucessAction()
         {

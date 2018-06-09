@@ -1,10 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_Cliente.cshtml";
-    ViewBag.image = 1;
 }
 
-<h1>@ViewBag.Id</h1>
-@Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Cliente")
+
 
 <div style="margin-top:5px;">
     <form method="post" action="/Cliente/AdicionarCliente" role="login">

@@ -10,48 +10,21 @@
             <section class="login-form">
             @if (!Request.IsAuthenticated)
             {
-                using (Html.BeginForm("Login", "Login", FormMethod.Post))
-                {
-                    @Html.ValidationSummary(false)
-                    <fieldset>
-                        Username: <input type="text" name="Username" required />
-                        Password: <input type="password" name="Password" required />
-                    </fieldset>
-                    <input type="submit" value="Submit" />
-                }
-            }
-            else
-            {
-                <span>Hello</span> <strong>@Html.Encode(User.Identity.Name)</strong>
-                @Html.ActionLink("Sign Out", "Logout", "Login")
+                <form method="post" action="/Login/Login" role="login">
+                    <center>
+                        <h2>Iniciar Sessão</h2>
+                        <h5>@Html.ValidationSummary(false)</h5>
+                        <input type="text" name="Username" placeholder="Username" required class="form-control input-lg" />
+                        <input type="password" name="Password" class="form-control input-lg" id="password" placeholder="Password" required="" />
+                    </center>
+                    <div class="pwstrength_viewport_progress"></div>
+                    <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Entrar</button>
+                    <div>
+                        @Html.ActionLink("Registar", "Index", "Cliente") uma nova conta.
+                    </div>
+                </form>
             }
             </section>
         </div>
     </div>
 </div>
-
-    <!--
-    <div class="container">
-        <div class="row" id="pwd-container">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <section class="login-form">
-                    <form method="post" action="/Login/Login" role="login">
-                        <center>
-                            <h2>Iniciar Sessão</h2>
-                            <h5>@Html.ValidationSummary(true)</h5>
-                            <input type="text" name="Username" placeholder="Username" required class="form-control input-lg" />
-                            <input type="password" name="Password" class="form-control input-lg" id="password" placeholder="Password" required="" />
-                        </center>
-                        <div class="pwstrength_viewport_progress"></div>
-                        <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Entrar</button>
-                        <div>
-                            @Html.ActionLink("Registar", "Index", "Cliente") uma nova conta.
-                        </div>
-                    </form>
-                </section>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-    </div>
-    -->

@@ -16,14 +16,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Massagens", "About", "Home")</li>
-                    <li>@Html.ActionLink("Requisitar Massagem", "Index", "Servico")</li>
-                    <li>@Html.ActionLink("Localização", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Logout", "Index", "Login")</li>
-                    <!--<li style="color:aquamarine">OLÁ@ViewBag.NomeCliente</li>-->
-                    <!--<li>@Html.ActionLink("Registar", "Index", "Cliente")</li>-->
-                    <!--<li>@Html.ActionLink("Sobre Zen+", "About", "Home")</li>-->
+                    <li>@Html.ActionLink("Requisitar Massagem", "Index", "Servico")</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color:aquamarine;">@User.Identity.Name</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Editar Perfil", "Logou", "Login")</li>
+                            <li>@Html.ActionLink("Pedidos", "Logout", "Login")</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -49,11 +49,11 @@ namespace HomeMassageWeb
         }
 
 
-        public static HttpCookie CreateAuthorizeTicket(string Id_Cliente, string roles)
+        public static HttpCookie CreateAuthorizeTicket(string info, string roles)
         {
             FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
                1, // versão
-               Id_Cliente,  // nome
+               info,  // nome
                DateTime.Now, // data de criação
                DateTime.Now.AddMinutes(30),  // validade
                false,   // se o cookie fica persistente ou não

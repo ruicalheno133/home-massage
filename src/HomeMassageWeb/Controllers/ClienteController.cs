@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using HomeMassageWeb.Models;
 
 namespace HomeMassageWeb.Controllers
@@ -15,6 +16,14 @@ namespace HomeMassageWeb.Controllers
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult PaginaInicial()
+        {
+            HttpCookie authCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+            ViewBag.NomeCliente = authTicket.Name;
             return View();
         }
 
