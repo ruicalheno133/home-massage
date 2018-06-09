@@ -204,6 +204,7 @@
     <Content Include="Views\Servico\index.cshtml" />
     <Content Include="Views\Shared\_Cliente.cshtml" />
     <Content Include="Views\Cliente\PaginaInicial.cshtml" />
+    <Content Include="Views\Cliente\Pedidos.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

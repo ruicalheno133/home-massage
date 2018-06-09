@@ -7,7 +7,7 @@ namespace HomeMassageWeb.Models
     using System.Data.Entity.Spatial;
 
     [Table("Cliente")]
-    public partial class Cliente
+    public partial class Cliente 
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
