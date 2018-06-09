@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeMassageWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -19,12 +20,12 @@ namespace HomeMassageWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string Email, string Password)
+        public ActionResult Login(string Username, string Password)
         {
             if (ModelState.IsValid)
             {
                 var clientes = (from m in db.Clientes
-                               where m.Email == Email
+                               where m.Username == Username
                                select m);
 
                 if (clientes.ToList<Cliente>().Count > 0)
@@ -36,7 +37,6 @@ namespace HomeMassageWeb.Controllers
                         {
                             HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(cliente.Id_Cliente.ToString(), cliente.Role);
                             Response.Cookies.Add(cookie);
-                            return RedirectToAction("sucessAction");
                         }
                         else
                         {
@@ -52,7 +52,7 @@ namespace HomeMassageWeb.Controllers
 
                 }
             }
-            return RedirectToAction("insucessAction");
+            return RedirectToAction("index");
         }
 
 
@@ -61,13 +61,12 @@ namespace HomeMassageWeb.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Login");
         }
-
         public ActionResult sucessAction()
         {
             ViewBag.title = "Sucesso";
-            ViewBag.mensagem = "Login realizado com sucesso";
-            ViewBag.controller = "Home";
-            return View("_sucessView");
+            ViewBag.mensagem = "Login realizado com sucesso!";
+            ViewBag.controller = "Login";
+            return View();
         }
         public ActionResult insucessAction()
         {

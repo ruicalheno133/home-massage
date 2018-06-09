@@ -1,4 +1,4 @@
-namespace HomeMassageWeb
+namespace HomeMassageWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace HomeMassageWeb
         public int Id_Funcionario { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string Username { get; set; }
 
         [Required]

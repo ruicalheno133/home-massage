@@ -1,4 +1,4 @@
-namespace HomeMassageWeb
+namespace HomeMassageWeb.Models
 {
     using System;
     using System.Data.Entity;
@@ -37,6 +37,10 @@ namespace HomeMassageWeb
 
             modelBuilder.Entity<Cliente>()
                 .Property(e => e.Numero_Contribuinte)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cliente>()
+                .Property(e => e.Role)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Cliente>()

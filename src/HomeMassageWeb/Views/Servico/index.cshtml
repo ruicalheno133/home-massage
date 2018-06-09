@@ -1,9 +1,9 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
     ViewBag.image = 1;
 }
 
-
+<h1>@ViewBag.NomeCliente</h1>
 
 <div style="margin-top:5px;">
     <form method="post" action="/Cliente/AdicionarCliente" role="login">

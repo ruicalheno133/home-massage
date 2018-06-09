@@ -1,4 +1,4 @@
-namespace HomeMassageWeb
+namespace HomeMassageWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace HomeMassageWeb
         public bool Estado { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Endereco { get; set; }
 
         [Required]

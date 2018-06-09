@@ -1,4 +1,4 @@
-namespace HomeMassageWeb
+namespace HomeMassageWeb.Models
 {
     using System;
     using System.Collections.Generic;

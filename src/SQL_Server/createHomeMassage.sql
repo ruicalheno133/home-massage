@@ -1,28 +1,29 @@
 CREATE TABLE Cliente (
 	Id_Cliente			INT NOT NULL IDENTITY(1,1),
-	Username			VARCHAR(50) NOT NULL,
+	Username			VARCHAR(50) NOT NULL UNIQUE,
 	Password			VARCHAR(50) NOT NULL,
 	Nome				VARCHAR(50) NOT NULL,
 	Email				VARCHAR(50) NOT NULL UNIQUE,
 	Contacto			INT NOT NULL,
 	Numero_Contribuinte VARCHAR(9) NOT NULL,
-	Role                VARCHAR (60) DEFAULT ('user') NULL,
+	Data_Nascimento		DATE NOT NULL,
+	Role                VARCHAR (60) DEFAULT 'user' NULL,
 	CONSTRAINT PK_Client PRIMARY KEY (Id_Cliente)
 );
 
 CREATE TABLE Funcionario (
 	Id_Funcionario	INT NOT NULL IDENTITY(1,1),
-	Username		VARCHAR(10) NOT NULL,
+	Username		VARCHAR(50) NOT NULL UNIQUE,
 	Password		VARCHAR(50) NOT NULL,
 	Nome			VARCHAR(50) NOT NULL,
-	Email			VARCHAR(50) NOT NULL,
+	Email			VARCHAR(50) NOT NULL UNIQUE,
 	Estado			BIT NOT NULL,
 	CONSTRAINT PK_Funcionario PRIMARY KEY (Id_Funcionario)
 );
 
 CREATE TABLE Massagem (
 	Id_Massagem		INT NOT NULL IDENTITY(1,1),
-	Nome			VARCHAR(15) NOT NULL,
+	Nome			VARCHAR(15) NOT NULL UNIQUE,
 	Preco			MONEY NOT NULL,
 	Duracao			INT NOT NULL,
 	Descricao		VARCHAR(250) NOT NULL,
@@ -38,7 +39,7 @@ CREATE TABLE Servico (
 	Data				DATETIME NOT NULL,
 	Cartao_Credito		VARCHAR(19) NOT NULL,
 	Estado				BIT NOT NULL,
-	Endereco			VARCHAR(50) NOT NULL,
+	Endereco			VARCHAR(100) NOT NULL,
 	Codigo_Postal		VARCHAR(8) NOT NULL,
 	CONSTRAINT PK_Servico		PRIMARY KEY (Id_Servico),
 	CONSTRAINT FK_Cliente		FOREIGN KEY (Cliente)		REFERENCES Cliente(Id_Cliente) ON UPDATE CASCADE,

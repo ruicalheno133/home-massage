@@ -1,10 +1,9 @@
-namespace HomeMassageWeb
+namespace HomeMassageWeb.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity;
     using System.Data.Entity.Spatial;
 
     [Table("Cliente")]
@@ -41,16 +40,13 @@ namespace HomeMassageWeb
         [StringLength(9)]
         public string Numero_Contribuinte { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime Data_Nascimento { get; set; }
+
         [StringLength(60)]
         public string Role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servico> Servicoes { get; set; }
-
-        public class HomeMassageContext : DbContext
-        {
-            public DbSet<Cliente> Cliente { get; set; }
-        }
-
     }
 }
