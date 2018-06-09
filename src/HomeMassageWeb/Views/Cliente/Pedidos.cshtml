@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_Cliente.cshtml";
 }
 
-<h2></h2>
-
+<h2>Serviços Pendentes/Efetuados</h2>
+<hr />
 
 <div class="container">
     <div class="row">
@@ -58,7 +58,15 @@
                             @Html.DisplayFor(modelItem => item.Endereco)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Cartao_Credito)
+                            @if(item.Estado == true)
+                            {
+
+                                @Html.ActionLink(" ", "Recibo", "Cliente", "", new { @class = "glyphicon glyphicon-download-alt" })
+                            }
+                            else
+                            {
+                                <p>-</p>
+                            }
                         </td>
                         <td>
                             @if(item.Estado == true)

@@ -50,6 +50,15 @@ namespace HomeMassageWeb.Controllers
             return View();
         }
 
+        public ActionResult Recibo()
+        {
+            /*Response.ContentType = "application/png";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=logo.png");
+            Response.TransmitFile(Server.MapPath("~/Content/images/logo.png"));
+            Response.End();*/
+            return RedirectToAction("Pedidos");
+        }
+
         [HttpPost]
         public ActionResult AdicionarCliente([Bind(Include = "Username,Password,Nome,Email,Contacto,Data_Nascimento,Numero_Contribuinte")] Cliente cliente)
         {
