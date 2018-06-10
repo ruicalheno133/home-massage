@@ -1,0 +1,32 @@
+﻿@model  HomeMassageWeb.Models.Servico
+@{
+    ViewBag.Title = "Servico";
+    Layout = "~/Views/Shared/_Funcionario.cshtml";
+}
+
+<h2>Serviço Selecionado</h2>
+<hr />
+
+@if(Model != null)
+{
+    <p><b>Cliente: </b> @ViewBag.Nome</p>
+    <p><b>Massagem: </b> @Model.Massagem</p>
+    <p><b>Endereço: </b> @Model.Endereco</p>
+    <p><b>Código Postal: </b> @Model.Codigo_Postal</p>
+    <p><b>Data: </b> @Model.Data</p>
+
+    <div >
+        @using (Html.BeginForm("FinalizarServico", "Funcionario", FormMethod.Post))
+        {
+            <button type="submit" name="Id_Servico" value=@Model.Id_Servico class="lb btn btn-primary">Finalizar</button>
+        }
+        @using (Html.BeginForm("Index", "Funcionario", FormMethod.Post))
+        {
+            <button class="lb btn btn-primary">Obter direções</button>
+        }
+        @using (Html.BeginForm("Index", "Funcionario", FormMethod.Post))
+        {
+            <button class="lb btn btn-primary">Voltar</button>
+        }
+    </div>
+}

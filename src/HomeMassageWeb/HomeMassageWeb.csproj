@@ -152,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -205,6 +206,10 @@
     <Content Include="Views\Shared\_Cliente.cshtml" />
     <Content Include="Views\Cliente\PaginaInicial.cshtml" />
     <Content Include="Views\Cliente\Pedidos.cshtml" />
+    <Content Include="Views\Shared\_Funcionario.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Funcionario\Servico.cshtml" />
+    <Content Include="Views\Funcionario\FinalizarServico.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

@@ -11,19 +11,13 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("Zen+", "PaginaInicial", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Zen+", "PaginaInicial", "Funcionario", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Massagens", "About", "Home")</li>
-                </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <!--<li>@Html.ActionLink("Requisitar Massagem", "Index", "Servico")</li>-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color:aquamarine;">@User.Identity.Name</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Editar Perfil", "Logout", "Login")</li>
-                            <li>@Html.ActionLink("Serviços", "Pedidos", "Cliente")</li>
                             <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                         </ul>
                     </li>
@@ -42,7 +36,6 @@
             <p>&copy; @DateTime.Now.Year - Home Massage Web Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
