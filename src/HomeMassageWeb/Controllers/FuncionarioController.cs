@@ -1,4 +1,6 @@
 ﻿using HomeMassageWeb.Models;
+using System;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,8 +38,6 @@ namespace HomeMassageWeb.Controllers
             return View();
         }
 
-
-
         public ActionResult Servico(int Id_Servico)
         {
             var servicos = (from m in db.Servicoes
@@ -63,13 +63,60 @@ namespace HomeMassageWeb.Controllers
             return View();
         }
 
-
         [HttpPost]
         public ActionResult FinalizarServico(int Id_Servico)
         {
+            var servicos = (from m in db.Servicoes
+                            where m.Id_Servico == Id_Servico
+                            select m);
+
+            if (servicos.ToList<Servico>().Count > 0)
+            {
+                Servico servico = servicos.ToList<Servico>().ElementAt<Servico>(0);
+                servico.Estado = true;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    Console.WriteLine(ex);
+                    return RedirectToAction("Index");
+                }
+            }
+
             ViewBag.Id_Servico = Id_Servico;
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult ReportarOcorrencia(int Id_Servico, string Ocorrencia)
+        {
+            if (Ocorrencia != null)
+            {
+                var servicos = (from m in db.Servicoes
+                                where m.Id_Servico == Id_Servico
+                                select m);
+
+                if (servicos.ToList<Servico>().Count > 0)
+                {
+                    Servico servico = servicos.ToList<Servico>().ElementAt<Servico>(0);
+                    servico.Ocorrencias = Ocorrencia;
+
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        Console.WriteLine(ex);
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

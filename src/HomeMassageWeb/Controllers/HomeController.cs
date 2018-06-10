@@ -13,17 +13,21 @@ namespace HomeMassageWeb.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Sobre()
         {
-            ViewBag.Message = "Home Massage";
-
+            ViewBag.Message = "Zen+";
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Massagens()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Todas as massagens disponíveis!";
+            return View();
+        }
 
+        public ActionResult Localizacao()
+        {
+            ViewBag.Message = "Onde estamos localizados!";
             return View();
         }
     }

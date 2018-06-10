@@ -4,5 +4,15 @@
     Layout = "~/Views/Shared/_Funcionario.cshtml";
 }
 
-<h2>FinalizarServico</h2>
+<h2>Deseja reportar alguma ocorrência?</h2>
 
+@using (Html.BeginForm("ReportarOcorrencia", "Funcionario", FormMethod.Post))
+{
+    <form>
+        <div class="form-group">
+            <textarea class="form-control" rows="5" cols="10" name="Ocorrencia" id="comment" maxlength="250"></textarea>
+        </div>
+        <button type="submit" name="Id_Servico" value=@ViewBag.Id_Servico class="lb btn btn-primary">Reportar</button>
+        <button type="submit" name="Id_Servico" value=@ViewBag.Id_Servico class="lb btn btn-default">Cancelar</button>
+    </form>
+}
