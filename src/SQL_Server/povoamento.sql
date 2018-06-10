@@ -12,7 +12,7 @@ VALUES
 ('func002','168cef729f6c0bbb7c2f3bec98857975','func002','funcionario2@hotmail.com',1,'employee'),
 ('func003','b4fd4e310410cfa6c31661e66c425345','func003','funcionario3@hotmail.com',1,'employee'),
 ('func004','2698a3f9752cb7a4a438e658a479a569','func004','funcionario4@hotmail.com',0,'employee'),
-('func005',' f3ed85b558e1f3f1c72e68f52286de1a','func005','funcionario5@hotmail.com',1,'employee');
+('func005','f3ed85b558e1f3f1c72e68f52286de1a','func005','funcionario5@hotmail.com',1,'employee');
 
 
 INSERT INTO Cliente (Username,Password,Nome,Email,Contacto,Numero_Contribuinte,Data_Nascimento,Role)

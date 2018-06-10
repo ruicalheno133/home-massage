@@ -1,3 +1,6 @@
+CREATE DATABASE homemassage;
+USE homemassage;
+
 CREATE TABLE Cliente (
 	Id_Cliente			INT NOT NULL IDENTITY(1,1),
 	Username			VARCHAR(50) NOT NULL UNIQUE,
@@ -42,6 +45,8 @@ CREATE TABLE Servico (
 	Estado				BIT NOT NULL,
 	Endereco			VARCHAR(100) NOT NULL,
 	Codigo_Postal		VARCHAR(8) NOT NULL,
+	Ocorrencias			VARCHAR(250) NULL,
+	Classificacao		INT NULL,	
 	CONSTRAINT PK_Servico		PRIMARY KEY (Id_Servico),
 	CONSTRAINT FK_Cliente		FOREIGN KEY (Cliente)		REFERENCES Cliente(Id_Cliente) ON UPDATE CASCADE,
 	CONSTRAINT FK_Funcionario	FOREIGN KEY (Funcionario)	REFERENCES Funcionario(Id_Funcionario) ON UPDATE CASCADE,

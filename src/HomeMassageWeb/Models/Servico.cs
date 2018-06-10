@@ -34,6 +34,11 @@ namespace HomeMassageWeb.Models
         [StringLength(8)]
         public string Codigo_Postal { get; set; }
 
+        [StringLength(250)]
+        public string Ocorrencias { get; set; }
+
+        public int? Classificacao { get; set; }
+
         public virtual Cliente Cliente1 { get; set; }
 
         public virtual Funcionario Funcionario1 { get; set; }

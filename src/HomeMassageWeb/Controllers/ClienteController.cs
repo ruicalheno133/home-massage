@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HomeMassageWeb.Models;
+using System;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using HomeMassageWeb.Models;
 
 namespace HomeMassageWeb.Controllers
 {
@@ -37,7 +36,6 @@ namespace HomeMassageWeb.Controllers
                             where m.Username == UserName
                             select m);
 
-            //var servicos = new System.Linq.IQueryable<>();
             if (clientes.ToList<Cliente>().Count > 0)
             {
                 Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);

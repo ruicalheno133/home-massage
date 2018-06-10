@@ -104,6 +104,10 @@ namespace HomeMassageWeb.Models
             modelBuilder.Entity<Servico>()
                 .Property(e => e.Codigo_Postal)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Servico>()
+                .Property(e => e.Ocorrencias)
+                .IsUnicode(false);
         }
     }
 }

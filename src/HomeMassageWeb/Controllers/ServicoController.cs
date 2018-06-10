@@ -1,11 +1,11 @@
-﻿using HomeMassageWeb.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Data.Entity.Infrastructure;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Net.Mail;
+using HomeMassageWeb.Models;
 
 namespace HomeMassageWeb.Controllers
 {

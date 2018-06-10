@@ -6,7 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Security;
 
-namespace HomeMassageWeb
+namespace HomeMassageWeb.Models
 {
     public static class MyHelpers
     {
