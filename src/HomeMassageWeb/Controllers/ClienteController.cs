@@ -94,5 +94,29 @@ namespace HomeMassageWeb.Controllers
             ViewBag.controller = "Cliente";
             return View("_insucessView");
         }
+
+        [HttpPost]
+        public ActionResult CancelarServico(int ID)
+        {
+            try
+            {
+                var servicos = (from m in db.Servicoes
+                                where m.Id_Servico == ID
+                                select m);
+
+                if (servicos.ToList<Servico>().Count > 0)
+                {
+                    Servico servico = servicos.ToList<Servico>().ElementAt<Servico>(0);
+                    db.Servicoes.Remove(servico);
+                    db.SaveChanges();
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex);
+                return RedirectToAction("Pedidos");
+            }
+            return RedirectToAction("Pedidos");
+        }
     }
 }
