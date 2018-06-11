@@ -76,7 +76,7 @@ namespace HomeMassageWeb.Controllers
             ViewBag.mensagem = "Serviço requisitado com sucesso!";
             ViewBag.subMensagem = "Confirmação enviada por email!";
             ViewBag.controller = "Cliente";
-            ViewBag.view = "PaginaInicial";
+            ViewBag.view = "Index";
             return View("_sucessView");
         }
         public ActionResult insucessAction()
@@ -84,27 +84,34 @@ namespace HomeMassageWeb.Controllers
             ViewBag.title = "Insucesso";
             ViewBag.mensagem = "Erro ao efetuar requisição!";
             ViewBag.controller = "Servico";
+            ViewBag.view = "Index";
             return View("_insucessView");
         }
 
-
         private void sendEmail(string clientEmail, string clientName, DateTime date, string local)
         {
-            SmtpClient smtpClient = new SmtpClient();
-            smtpClient.Host = "smtp-mail.outlook.com";
-            smtpClient.Port = 587;
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new System.Net.NetworkCredential("homemassage_li4@hotmail.com", "homemassage27");
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.EnableSsl = true;
+            try
+            {
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Host = "smtp-mail.outlook.com";
+                smtpClient.Port = 587;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new System.Net.NetworkCredential("homemassage_li4@hotmail.com", "homemassage27");
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.EnableSsl = true;
 
 
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("homemassage_li4@hotmail.com");
-            mail.Subject = "Confirmação da requisição da massagem";
-            mail.To.Add(new MailAddress(clientEmail));
-            mail.Body = "Bom dia " + clientName + ",\n\nInformamos que a sua massagem foi confirmada para o dia " + date.ToString() + ", " + local + ".\n\nCumprimentos, Zen+";
-            smtpClient.Send(mail);
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("homemassage_li4@hotmail.com");
+                mail.Subject = "Confirmação da requisição da massagem";
+                mail.To.Add(new MailAddress(clientEmail));
+                mail.Body = "Bom dia " + clientName + ",\n\nInformamos que a sua massagem foi confirmada para o dia " + date.ToString() + ", " + local + ".\n\nCumprimentos, Zen+";
+                smtpClient.Send(mail);
+            }
+            catch (SmtpFailedRecipientException ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }

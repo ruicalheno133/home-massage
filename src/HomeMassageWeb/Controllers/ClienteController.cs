@@ -15,14 +15,20 @@ namespace HomeMassageWeb.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult PaginaInicial()
-        {
             HttpCookie authCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
             FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
             ViewBag.NomeCliente = authTicket.Name;
+            return View();
+        }
+
+        public ActionResult RegistarCliente()
+        {
+            return View();
+        }
+
+        public ActionResult Massagens()
+        {
+            ViewBag.Message = "Todas as massagens disponíveis!";
             return View();
         }
 
@@ -90,6 +96,7 @@ namespace HomeMassageWeb.Controllers
             ViewBag.title = "Insucesso";
             ViewBag.mensagem = "Erro no registo!";
             ViewBag.controller = "Cliente";
+            ViewBag.view = "RegistarCliente";
             return View("_insucessView");
         }
 

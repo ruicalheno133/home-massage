@@ -35,7 +35,7 @@ namespace HomeMassageWeb.Controllers
                         {
                             HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(cliente.Username, cliente.Role);
                             Response.Cookies.Add(cookie);
-                            return RedirectToAction("PaginaInicial", "Cliente");
+                            return RedirectToAction("Index", "Cliente");
                         }
                         else
                         {
@@ -70,7 +70,6 @@ namespace HomeMassageWeb.Controllers
             ModelState.AddModelError("", "Username incorreto!");
             return View("Index");
         }
-
 
         public ActionResult Logout()
         {

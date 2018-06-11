@@ -3,8 +3,8 @@
 }
 
 <h2>@ViewBag.mensagem</h2>
-@{string returnControler = @ViewBag.controller;}
-@using (Html.BeginForm("Index", returnControler, FormMethod.Post))
+@{string returnControler = @ViewBag.controller; string returnView = ViewBag.view;}
+@using (Html.BeginForm(returnView, returnControler, FormMethod.Post))
 {
     <button class="lb btn btn-primary">Voltar</button>
 }
