@@ -116,5 +116,87 @@ namespace HomeMassageWeb.Controllers
             }
             return RedirectToAction("Pedidos");
         }
+
+
+        public ActionResult Classificar(int Id_Servico)
+        {
+            ViewBag.Id_Servico = Id_Servico;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ClassificarServico(int Classificacao, int Id_Servico)
+        {
+            var servicos = (from m in db.Servicoes
+                            where m.Id_Servico == Id_Servico
+                            select m);
+
+            if (servicos.ToList<Servico>().Count > 0)
+            {
+                Servico servico = servicos.ToList<Servico>().ElementAt<Servico>(0);
+                servico.Classificacao = Classificacao;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    Console.WriteLine(ex);
+                    return RedirectToAction("Pedidos");
+                }
+            }
+            return RedirectToAction("Pedidos");
+        }
+
+
+        public ActionResult EditarPerfil(string Username)
+        {
+            var clientes = (from m in db.Clientes
+                            where m.Username == Username
+                            select m);
+
+            if (clientes.ToList<Cliente>().Count > 0)
+            {
+                Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
+                ViewBag.Id_Cliente = cliente.Id_Cliente;
+                ViewBag.Email = cliente.Email;
+                ViewBag.Contacto = cliente.Contacto;
+                return View(cliente);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditarDados(int Id_Cliente, string Email, string Password, string Contacto)
+        {
+            var clientes = (from m in db.Clientes
+                            where m.Id_Cliente == Id_Cliente
+                            select m);
+
+            if (clientes.ToList<Cliente>().Count > 0)
+            {
+                Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
+
+                if (Email != null)
+                    cliente.Email = Email;
+                if (Password != null)
+                    cliente.Password = Password;
+                if (Contacto != null)
+                    cliente.Contacto = Int32.Parse(Contacto);
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    Console.WriteLine(ex);
+                    return RedirectToAction("insucessAction");
+                }
+            }
+            return RedirectToAction("PaginaInicial");
+        }
     }
 }

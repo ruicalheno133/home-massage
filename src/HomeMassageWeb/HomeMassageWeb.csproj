@@ -211,6 +211,8 @@
     <Content Include="Views\Funcionario\FinalizarServico.cshtml" />
     <Content Include="Web.Config" />
     <Content Include="Views\Home\Massagens.cshtml" />
+    <Content Include="Views\Cliente\Classificar.cshtml" />
+    <Content Include="Views\Cliente\EditarPerfil.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

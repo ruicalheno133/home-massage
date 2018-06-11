@@ -29,24 +29,30 @@ namespace HomeMassageWeb.Controllers
                 HttpCookie authCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
                 string clienteUsername = authTicket.Name;
-
                 Servico servico = new Servico();
+
                 var clientes = (from m in db.Clientes
                                 where m.Username == clienteUsername
                                 select m);
 
-                if (clientes.ToList<Cliente>().Count > 0)
+                var funcionarios = (from m in db.Funcionarios
+                                    where m.Estado == true && m.Username != "admin"  //alterar para  (m.Role != "employee")
+                                    select m);
+
+                if (clientes.ToList<Cliente>().Count > 0 && funcionarios.ToList<Funcionario>().Count > 0)
                 {
+                    Random random = new Random();
+                    int disponiveis = funcionarios.ToList<Funcionario>().Count;
+                    Funcionario funcionario = funcionarios.ToList<Funcionario>().ElementAt<Funcionario>(random.Next(disponiveis - 1));
                     Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
                     servico.Cliente = cliente.Id_Cliente;
-                    servico.Funcionario = 2; //MUDAR
+                    servico.Funcionario = funcionario.Id_Funcionario;
                     servico.Massagem = Massagem;
                     servico.Data = DateTime.Parse(Data);
                     servico.Cartao_Credito = Cartao_Credito;
                     servico.Estado = false;
                     servico.Endereco = Endereco;
                     servico.Codigo_Postal = Codigo_Postal;
-
                     try
                     {
                         db.Servicoes.Add(servico);
@@ -59,7 +65,7 @@ namespace HomeMassageWeb.Controllers
                         Console.WriteLine(ex);
                         return RedirectToAction("insucessAction");
                     }
-                }               
+                }
             }
             return RedirectToAction("insucessAction");
         }

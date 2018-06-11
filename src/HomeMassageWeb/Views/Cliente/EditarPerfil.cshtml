@@ -1,0 +1,39 @@
+﻿@model  HomeMassageWeb.Models.Cliente
+@{
+    ViewBag.Title = "EditarPerfil";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row" id="pwd-container">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <section class="profile-form">
+                @if (Request.IsAuthenticated)
+                {
+                    <form method="post" action="/Cliente/EditarDados" role="login">
+                        <center>
+                            <h2>Editar Perfil</h2>
+                            <h5>@Html.ValidationSummary(false)</h5>
+                            @if (Model != null)
+                            {
+                                <input type="email" name="Email" value=@Model.Email class="form-control input-lg" />
+                                <input type="password" name="Password" value=@Model.Password class="form-control input-lg" id="password"/>
+                                <input type="tel" name="Contacto" value=@Model.Contacto class="form-control"/>
+                            }
+                        </center>
+                        <div class="pwstrength_viewport_progress"></div>
+                        <button type="submit" name="Id_Cliente" value=@Model.Id_Cliente class="btn btn-lg btn-primary btn-block">Guardar alterações</button>
+                        <div>
+                            <center>
+                                @Html.ActionLink("Cancelar", "PaginaInicial", "Cliente")
+                            </center>
+                        </div>
+                    </form>
+                }
+            </section>
+        </div>
+    </div>
+</div>

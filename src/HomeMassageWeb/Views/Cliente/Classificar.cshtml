@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Classificar";
+    Layout = "~/Views/Shared/_Cliente.cshtml";
+}
+
+<h2>Classificação do Serviço</h2>
+
+<div class="container">
+    @using (Html.BeginForm("ClassificarServico", "Cliente", FormMethod.Post))
+    {
+        <form>
+            <div class="form-group">
+                <div class="column">
+                    <div>
+                        <input type="radio" name="Classificacao" value=1 checked>Péssimo
+                    </div>
+                    <div>
+                        <input type="radio" name="Classificacao" value=2>Razoável
+                    </div>
+                    <div>
+                        <input type="radio" name="Classificacao" value=3>Bom
+                    </div>
+                    <div>
+                        <input type="radio" name="Classificacao" value=4>Muito bom
+                    </div>
+                    <div>
+                        <input type="radio" name="Classificacao" value=5>Excelente
+                    </div>
+                    <br />
+                    <button type="submit" name="Id_Servico" value=@ViewBag.Id_Servico class="btn btn-primary btn-default btn-prev">Confirmar</button>
+                </div>
+            </div>
+        </form>
+    }
+</div>

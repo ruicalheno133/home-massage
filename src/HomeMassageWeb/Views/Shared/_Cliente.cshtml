@@ -22,7 +22,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color:aquamarine;">@User.Identity.Name</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Editar Perfil", "Logout", "Login")</li>
+                            <li>@Html.ActionLink("Editar Perfil", "EditarPerfil", "Cliente", new { Username=@User.Identity.Name },null)</li>
                             <li>@Html.ActionLink("Serviços", "Pedidos", "Cliente")</li>
                             <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                         </ul>

@@ -20,6 +20,7 @@
                             <th>Endereço</th>
                             <th>Recibo</th>
                             <th>Estado</th>
+                            <th>Classificação</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -75,6 +76,36 @@
                                     else
                                     {
                                         <span class="label label-warning">Pendente</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Estado != false && item.Classificacao == null)
+                                    {        
+                                        @Html.ActionLink(" ", "Classificar", "Cliente", new { Id_Servico = item.Id_Servico } , new { @class = "glyphicon glyphicon-thumbs-up" })
+                                    }
+                                    else
+                                    {
+                                        if (item.Classificacao == 1)
+                                        {
+                                            <p>Péssimo</p>
+                                        }
+
+                                        if (item.Classificacao == 2)
+                                        {
+                                            <p>Razoável</p>
+                                        }
+                                        if (item.Classificacao == 3)
+                                        {
+                                            <p>Bom</p>
+                                        }
+                                        if (item.Classificacao == 4)
+                                        {
+                                            <p>Muito bom</p>
+                                        }
+                                        if (item.Classificacao == 5)
+                                        {
+                                            <p>Excelente</p>
+                                        }
                                     }
                                 </td>
                                 <td>
