@@ -4,27 +4,29 @@
 
 
 <div class="container">
-    <div class="row" id="pwd-container">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <section class="login-form">
-            @if (!Request.IsAuthenticated)
-            {
-                <form method="post" action="/Login/Login" role="login">
-                    <center>
-                        <h2>Iniciar Sessão</h2>
-                        <h5>@Html.ValidationSummary(false)</h5>
-                        <input type="text" name="Username" placeholder="Username" required class="form-control input-lg" />
-                        <input type="password" name="Password" class="form-control input-lg" id="password" placeholder="Password" required="" />
-                    </center>
-                    <div class="pwstrength_viewport_progress"></div>
-                    <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Entrar</button>
-                    <div>
-                        @Html.ActionLink("Registar", "Index", "Cliente") uma nova conta.
-                    </div>
-                </form>
-            }
-            </section>
+    <div class="animate fadeInUp one">
+        <div class="row" id="pwd-container">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <section class="login-form">
+                    @if (!Request.IsAuthenticated)
+                    {
+                        <form method="post" action="/Login/Login" role="login">
+                            <center>
+                                <h2>Iniciar Sessão</h2>
+                                <h5>@Html.ValidationSummary(false)</h5>
+                                <input type="text" name="Username" maxlength="50" placeholder="Username" required class="form-control input-lg" />
+                                <input type="password" name="Password" maxlength="50" class="form-control input-lg" id="password" placeholder="Password" required="" />
+                            </center>
+                            <div class="pwstrength_viewport_progress"></div>
+                            <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Entrar</button>
+                            <div>
+                                @Html.ActionLink("Registar", "Index", "Cliente") uma nova conta.
+                            </div>
+                        </form>
+                    }
+                </section>
+            </div>
         </div>
     </div>
 </div>

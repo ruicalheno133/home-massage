@@ -26,7 +26,32 @@ namespace HomeMassageWeb.Controllers
                                 where m.Username == Username
                                 select m);
 
-                if (clientes.ToList<Cliente>().Count > 0)
+                if (clientes.ToList<Cliente>().Count == 0)
+                {
+                    var funcionarios = (from m in db.Funcionarios
+                                        where m.Username == Username
+                                        select m);
+
+                    Funcionario funcionario = funcionarios.ToList<Funcionario>().ElementAt<Funcionario>(0);
+                    using (MD5 md5Hash = MD5.Create())
+                    {
+                        if (MyHelpers.VerifyMd5Hash(md5Hash, Password, funcionario.Password))
+                        {
+                            HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(funcionario.Username, funcionario.Role);
+                            Response.Cookies.Add(cookie);
+                            if (Username.Equals("admin"))
+                                return RedirectToAction("Index", "Admin");
+                            else
+                                return RedirectToAction("Index", "Funcionario");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("password", "Password incorreta!");
+                            return View("Index");
+                        }
+                    }
+                }
+                else
                 {
                     Cliente cliente = clientes.ToList<Cliente>().ElementAt<Cliente>(0);
                     using (MD5 md5Hash = MD5.Create())
@@ -43,29 +68,7 @@ namespace HomeMassageWeb.Controllers
                             return View("Index");
                         }
                     }
-                }
-                var funcionarios = (from m in db.Funcionarios
-                                    where m.Username == Username
-                                    select m);
-
-                if (funcionarios.ToList<Funcionario>().Count > 0)
-                {
-                    Funcionario funcionario = funcionarios.ToList<Funcionario>().ElementAt<Funcionario>(0);
-                    using (MD5 md5Hash = MD5.Create())
-                    {
-                        if (MyHelpers.VerifyMd5Hash(md5Hash, Password, funcionario.Password))
-                        {
-                            HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(funcionario.Username, funcionario.Role);
-                            Response.Cookies.Add(cookie);
-                            return RedirectToAction("Index", "Funcionario");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("password", "Password incorreta!");
-                            return View("Index");
-                        }
-                    }
-                }
+                }     
             }
             ModelState.AddModelError("", "Username incorreto!");
             return View("Index");

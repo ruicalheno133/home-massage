@@ -19,9 +19,9 @@
                             <h5>@Html.ValidationSummary(false)</h5>
                             @if (Model != null)
                             {
-                                <input type="email" name="Email" value=@Model.Email class="form-control input-lg" />
-                                <input type="password" name="Password" value=@Model.Password class="form-control input-lg" id="password"/>
-                                <input type="tel" name="Contacto" value=@Model.Contacto class="form-control"/>
+                                <input type="email" name="Email" maxlength="50" value=@Model.Email class="form-control input-lg" />
+                                <input type="password" name="Password" maxlength="50" value=@Model.Password class="form-control input-lg" id="password"/>
+                                <input type="tel" name="Contacto" maxlength="50" value=@Model.Contacto class="form-control"/>
                             }
                         </center>
                         <div class="pwstrength_viewport_progress"></div>

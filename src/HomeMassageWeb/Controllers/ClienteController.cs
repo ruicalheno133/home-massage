@@ -32,6 +32,18 @@ namespace HomeMassageWeb.Controllers
             return View();
         }
 
+        public ActionResult Localizacao()
+        {
+            ViewBag.Message = "Onde estamos localizados!";
+            return View();
+        }
+
+        public ActionResult Sobre()
+        {
+            ViewBag.Message = "Zen+";
+            return View();
+        }
+
         public ActionResult Pedidos()
         {
             HttpCookie authCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];

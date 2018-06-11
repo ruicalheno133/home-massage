@@ -4,46 +4,49 @@
 }
 
 
-
-<div style="margin-top:5px;">
-    <form method="post" action="/Servico/EfetuarServico" role="login">
-        <center>
-            <h1>@ViewBag.Title</h1>
-            <h5 style="color:grey;">Preencha todos os campos.</h5>
-        </center>
-        <div class="row" style="margin-top:80px;">
-            <div class="column">
-                <div class="container">
-                    <section class="login-form">
-                        <center>
-                            <input type="text" name="Cartao_Credito" class="form-control" placeholder="Número de Cartão de Crédito" required />
-                            <input type="text" name="Endereco" class="form-control" placeholder="Morada" required />
-                            <input type="text" name="Codigo_Postal" class="form-control" placeholder="Código de Postal" required />
-                            <input type="datetime-local" name="Data" class="form-control" value=@ViewBag.Time min=@ViewBag.Time required />
-                        </center>
-                    </section>
+<div class="container">
+    <div class="animate fadeInUp one">
+        <div style="margin-top:5px;">
+            <form method="post" action="/Servico/EfetuarServico" role="login">
+                <center>
+                    <h1>@ViewBag.Title</h1>
+                    <h5 style="color:grey;">Preencha todos os campos.</h5>
+                </center>
+                <div class="row" style="margin-top:30px;">
+                    <div class="column">
+                        <div class="container">
+                            <section class="login-form">
+                                <center>
+                                    <input type="text" name="Cartao_Credito" maxlength="50" class="form-control" placeholder="Número de Cartão de Crédito" required />
+                                    <input type="text" name="Endereco" maxlength="50" class="form-control" placeholder="Morada" required />
+                                    <input type="text" name="Codigo_Postal" maxlength="50" class="form-control" placeholder="Código de Postal (0000-000)" required />
+                                    <input type="datetime-local" name="Data" maxlength="50" class="form-control" value=@ViewBag.Time min=@ViewBag.Time required />
+                                </center>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="column" style="margin-top:30px;">
+                        <div>
+                            <input type="radio" name="Massagem" value=1 checked>RELAXANTE
+                        </div>
+                        <div>
+                            <input type="radio" name="Massagem" value=2>PROFUNDA
+                        </div>
+                        <div>
+                            <input type="radio" name="Massagem" value=3>SUECA
+                        </div>
+                        <div>
+                            <input type="radio" name="Massagem" value=4>DESPORTIVA
+                        </div>
+                        <div>
+                            <input type="radio" name="Massagem" value=5>PRÉ-NATAL
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="column" style="margin-top:30px;">
-                <div>
-                    <input type="radio" name="Massagem" value=1 checked>RELAXANTE
-                </div>
-                <div>
-                    <input type="radio" name="Massagem" value=2>PROFUNDA
-                </div>
-                <div>
-                    <input type="radio" name="Massagem" value=3>SUECA
-                </div>
-                <div>
-                    <input type="radio" name="Massagem" value=4>DESPORTIVA
-                </div>
-                <div>
-                    <input type="radio" name="Massagem" value=5>PRÉ-NATAL
-                </div>
-            </div>
+                <center>
+                    <button type="submit" name="go" class="lb btn btn-primary">Requisitar</button>
+                </center>
+            </form>
         </div>
-        <center>
-            <button type="submit" name="go" class="lb btn btn-primary">Requisitar</button>
-        </center>
-    </form>
+    </div>
 </div>

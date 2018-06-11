@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HomeMassage</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <script type="text/javascript">
+        var map, loc;
+
+        function LoadMap() {
+            map = new Microsoft.Maps.Map(
+                document.getElementById('myMap'),
+                {
+                    credentials: "AtOR4BdfZGlRDAMftJfm17Nv_ee0ixhQXRpmuqqNhlrW2v9BqyZywCxpHR5YHv3K",
+                });
+
+        }
+
+        function getDirections()
+        {
+            //Request the user's location
+            navigator.geolocation.getCurrentPosition(function (position) {
+                loc = new Microsoft.Maps.Location(
+                    position.coords.latitude,
+                    position.coords.longitude);
+                console.log('@ViewBag.Address');
+                Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+                    //Create an instance of the directions manager.
+                    directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+                    //Create waypoints to route between.
+                    var origem = new Microsoft.Maps.Directions.Waypoint({ location: loc });
+                    directionsManager.addWaypoint(origem);
+                    var destino = new Microsoft.Maps.Directions.Waypoint({ address: '@ViewBag.Address' });
+                    directionsManager.addWaypoint(destino);
+                    //Specify the element in which the itinerary will be rendered.
+                    directionsManager.setRenderOptions({ itineraryContainer: '#directionsItinerary' });
+                    //Calculate directions.
+                    directionsManager.calculateDirections();
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="LoadMap(); getDirections();">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Serviços", "Index", "Funcionario", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color:aquamarine;">@User.Identity.Name</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Home Massage Web Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

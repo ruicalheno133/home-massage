@@ -21,9 +21,9 @@
             <button type="submit" name="Id_Servico" value=@Model.Id_Servico class="lb btn btn-primary">Finalizar</button>
         }
         <br />
-        @using (Html.BeginForm("Index", "Funcionario", FormMethod.Post))
+        @using (Html.BeginForm("ObterDirecoes", "Funcionario", FormMethod.Post))
         {
-            <button class="lb btn btn-default">Obter direções</button>
+            <button type="submit" name="Address" value="@Model.Endereco" class="lb btn btn-default">Obter direções</button>
         }
         <br />
         @using (Html.BeginForm("Index", "Funcionario", FormMethod.Post))
@@ -32,22 +32,3 @@
         }
     </div>
 }
-
-
-<!--<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Ocorrências</h4>
-            </div>
-            <div class="modal-body">
-                <p>Pretende reportar alguma situação?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" name="Ocorrencia" value=1 class="btn btn-primary btn-default btn-prev">Confirmar</button>
-                <button type="submit" name="Ocorrencia" value=0 class="btn btn-default" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>-->
