@@ -274,3 +274,79 @@ textarea {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
 }
+
+
+
+
+ /* HOME PAGE */
+.logoResponsive {
+    width: 100%;
+    max-width: 750px;
+    height: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    text-align: center;
+    display: block;
+}
+
+div.TitleSize {
+    padding: 20px;
+}
+
+@media screen and (min-width: 601px) {
+    div.TitleSize {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.TitleSize {
+        font-size: 25px;
+    }
+}
+
+div.ImageTitle {
+    padding: 20px;
+}
+
+@media screen and (min-width: 601px) {
+    div.ImageTitle {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.ImageTitle {
+        font-size: 10px;
+    }
+}
+
+
+div.gallery {
+    margin: 10px;
+    float: left;
+    width: 180px;
+}
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+div.desc {
+    padding: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 601px) {
+    div.desc {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div.desc {
+        font-size: 15px;
+    }
+}

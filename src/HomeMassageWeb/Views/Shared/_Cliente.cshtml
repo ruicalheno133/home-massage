@@ -11,6 +11,11 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 @Html.ActionLink("Zen+", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
@@ -24,7 +29,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="color:aquamarine;">@User.Identity.Name</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Editar Perfil", "EditarPerfil", "Cliente", new { Username=@User.Identity.Name },null)</li>
+                            <li>@Html.ActionLink("Editar Perfil", "EditarPerfil", "Cliente", new { Username = @User.Identity.Name }, null)</li>
                             <li>@Html.ActionLink("Serviços", "Pedidos", "Cliente")</li>
                             <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                         </ul>
@@ -34,8 +39,10 @@
         </div>
     </div>
     <!-- LOGO -->
-    <div class="centerImage">
-        <img style='height: 40%; width: 40%; object-fit: contain' src="..\..\Content\images\logo_2.png">
+    <div>
+        <center>
+            <img src="..\..\Content\images\logo_2.png" class="logoResponsive">
+        </center>
     </div>
     <div class="container body-content">
         @RenderBody()

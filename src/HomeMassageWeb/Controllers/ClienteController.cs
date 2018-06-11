@@ -95,18 +95,22 @@ namespace HomeMassageWeb.Controllers
             }
             return RedirectToAction("sucessAction");
         }
+
         public ActionResult sucessAction()
         {
             ViewBag.title = "Sucesso";
             ViewBag.mensagem = "Registo efetuado com sucesso!";
+            ViewBag.Shared = "~/Views/Shared/_Layout.cshtml";
             ViewBag.controller = "Login";
             ViewBag.view = "Index";
             return View("_sucessView");
         }
+
         public ActionResult insucessAction()
         {
             ViewBag.title = "Insucesso";
             ViewBag.mensagem = "Erro no registo!";
+            ViewBag.Shared = "~/Views/Shared/_Layout.cshtml";
             ViewBag.controller = "Cliente";
             ViewBag.view = "RegistarCliente";
             return View("_insucessView");

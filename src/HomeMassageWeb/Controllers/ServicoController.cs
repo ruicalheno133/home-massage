@@ -75,6 +75,7 @@ namespace HomeMassageWeb.Controllers
             ViewBag.title = "Sucesso";
             ViewBag.mensagem = "Serviço requisitado com sucesso!";
             ViewBag.subMensagem = "Confirmação enviada por email!";
+            ViewBag.Shared = "~/Views/Shared/_Cliente.cshtml";
             ViewBag.controller = "Cliente";
             ViewBag.view = "Index";
             return View("_sucessView");
@@ -83,6 +84,7 @@ namespace HomeMassageWeb.Controllers
         {
             ViewBag.title = "Insucesso";
             ViewBag.mensagem = "Erro ao efetuar requisição!";
+            ViewBag.Shared = "~/Views/Shared/_Cliente.cshtml";
             ViewBag.controller = "Servico";
             ViewBag.view = "Index";
             return View("_insucessView");

@@ -51,6 +51,7 @@ namespace HomeMassageWeb.Controllers
         {
             ViewBag.title = "Insucesso";
             ViewBag.mensagem = "Erro no registo!";
+            ViewBag.Shared = "~/Views/Shared/_Administrador.cshtml";
             ViewBag.controller = "Admin";
             ViewBag.view = "Index";
             return View("_insucessView");

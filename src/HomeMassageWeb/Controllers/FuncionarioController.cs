@@ -146,7 +146,6 @@ namespace HomeMassageWeb.Controllers
             return RedirectToAction("Index");
         }
 
-
         [HttpPost]
         private void sendEmail(Servico s, Cliente c, Massagem m)
         {

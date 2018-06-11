@@ -32,22 +32,25 @@ namespace HomeMassageWeb.Controllers
                                         where m.Username == Username
                                         select m);
 
-                    Funcionario funcionario = funcionarios.ToList<Funcionario>().ElementAt<Funcionario>(0);
-                    using (MD5 md5Hash = MD5.Create())
+                    if (funcionarios.ToList<Funcionario>().Count > 0)
                     {
-                        if (MyHelpers.VerifyMd5Hash(md5Hash, Password, funcionario.Password))
+                        Funcionario funcionario = funcionarios.ToList<Funcionario>().ElementAt<Funcionario>(0);
+                        using (MD5 md5Hash = MD5.Create())
                         {
-                            HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(funcionario.Username, funcionario.Role);
-                            Response.Cookies.Add(cookie);
-                            if (Username.Equals("admin"))
-                                return RedirectToAction("Index", "Admin");
+                            if (MyHelpers.VerifyMd5Hash(md5Hash, Password, funcionario.Password))
+                            {
+                                HttpCookie cookie = MyHelpers.CreateAuthorizeTicket(funcionario.Username, funcionario.Role);
+                                Response.Cookies.Add(cookie);
+                                if (Username.Equals("admin"))
+                                    return RedirectToAction("Index", "Admin");
+                                else
+                                    return RedirectToAction("Index", "Funcionario");
+                            }
                             else
-                                return RedirectToAction("Index", "Funcionario");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("password", "Password incorreta!");
-                            return View("Index");
+                            {
+                                ModelState.AddModelError("password", "Password incorreta!");
+                                return View("Index");
+                            }
                         }
                     }
                 }
@@ -78,20 +81,6 @@ namespace HomeMassageWeb.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
-        }
-        public ActionResult sucessAction()
-        {
-            ViewBag.title = "Sucesso";
-            ViewBag.mensagem = "Login realizado com sucesso!";
-            ViewBag.controller = "Login";
-            return View();
-        }
-        public ActionResult insucessAction()
-        {
-            ViewBag.title = "Insucesso";
-            ViewBag.mensagem = "Erro ao efetuar login!";
-            ViewBag.controller = "Login";
-            return View("_insucessView");
         }
     }
 }

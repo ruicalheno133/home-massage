@@ -5,5 +5,14 @@
 
 
 
-<h2>Direções</h2>
-<div id="myMap" style="position:relative; width:500px; height:500px"></div>
+<div class="container">
+    <h2>Direções</h2>
+    <div id="myMap" style="position:relative; width:500px; height:500px"></div>
+    <br />
+    <div>
+        @using (Html.BeginForm("Index", "Funcionario", FormMethod.Post))
+        {
+            <button class="lb btn btn-default">Voltar</button>
+        }
+    </div>
+</div>
