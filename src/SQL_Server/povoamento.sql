@@ -14,14 +14,20 @@ VALUES
 ('func004','2698a3f9752cb7a4a438e658a479a569','func004','funcionario4@hotmail.com',0,'employee'),
 ('func005','f3ed85b558e1f3f1c72e68f52286de1a','func005','funcionario5@hotmail.com',1,'employee');
 
-
 INSERT INTO Cliente (Username,Password,Nome,Email,Contacto,Numero_Contribuinte,Data_Nascimento,Role)
 VALUES
-('andre62','a4ad2a25dcf6ab4220606dce6982fd63','André Salgueiro','andre@gmail.com',926231675,'250704293','1996-07-09','user'),
-('hugo68','12cbab1ee557242c13b6396ef164701e','Hugo Oliveira','oliveirahugo.97@gmail.com',966765650,'250704293','1996-07-09','user'),
-('paula72','f1370fb56962fddf6ff58d97dbaa4224','Paula Pereira','pspereira_@hotmail.com',917390750,'250704293','1996-07-09','user'),
-('rui133','b84e1c3b002c87fa8955ccc4c5e3defc','Rui Calheno','ruic66@hotmail.com',915049712,'250704293','1997-06-06','user');
+('uti001','33e83cefe28373c7232b0eca7f3f9dcd','Utilizador 1','a77617@alunos.uminho.pt',926231675,'502304812','1997-10-09','user'),
+('uti002','86b34ab0e5aeaae8a0545c05658e90ec','Utilizador 2','a78565@alunos.uminho.pt',966765650,'508033519','1998-04-25','user'),
+('uti003','ae4e46dd21657419bac798850428fbcd','Utilizador 3','a77672@alunos.uminho.pt',917390750,'980414679','1993-08-29','user'),
+('uti004','8f1093c26f5125b00bca664dd104e551','Utilizador 4','a78085@alunos.uminho.pt',915049712,'508451639','1994-12-25','user');
 
-INSERT INTO Servico (Id_Servico,Cliente,Funcionario,Massagem,Data,Cartao_Credito,Estado,Endereco,Codigo_Postal)
+INSERT INTO Servico (Cliente,Funcionario,Massagem,Data,Cartao_Credito,Estado,Endereco,Codigo_Postal)
 VALUES
-(1,2,2,1,'2018-07-01 12:00:00','401200103714111123',0,'Rua Nova de Santa Cruz, n81','4710-409');
+(3,2,1,'2018-07-01 12:00:00','401200103714111123',0,'Rua Sao Domingos, Braga','4710-409'),
+(1,5,2,'2018-07-23 16:30:00','507860187000012785',0,'Rua das Cavadas, Barrosas','4450-150'),
+(1,3,2,'2018-05-01 10:30:00','761450103714111123',1,'Rua Martins Sarmento Sao Victor, Braga','4710-406'),
+(4,5,4,'2018-05-09 11:15:00','3841001111222233334',1,'Acesso Entre As Ruas Bernardo Sequeira e Martins Sarmento Sao Victor,Braga','4710-406'),
+(2,5,1,'2018-03-01 12:00:00','401200103714111123',1,'Rua Sao Domingos, Braga','4710-409'),
+(4,3,2,'2018-10-25 09:30:00','507860187000012785',0,'Rua das Cavadas, Barrosas','4450-150'),
+(3,3,2,'2018-02-01 13:30:00','761450103714111123',1,'Rua Martins Sarmento Sao Victor, Braga','4710-406'),
+(2,5,4,'2018-06-15 08:15:00','3841001111222233334',0,'Acesso Entre As Ruas Bernardo Sequeira e Martins Sarmento Sao Victor,Braga','4710-406');
