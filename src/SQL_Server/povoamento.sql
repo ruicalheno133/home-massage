@@ -1,3 +1,5 @@
+use homemassage;
+
 INSERT INTO Massagem (Nome,Preco,Duracao,Descricao,Imagem)
 VALUES
 ('Relaxante',40,45,'',NULL),
@@ -8,7 +10,7 @@ VALUES
 
 INSERT INTO Funcionario (Username,Password,Nome,Email,Estado,Role)
 VALUES
-('admin','7260bedd7813b31b27c204450a065136','admin','homemassage@hotmail.com',1,'employee'),
+('admin','7260bedd7813b31b27c204450a065136','admin','homemassage@hotmail.com',1,'admin'),
 ('func002','168cef729f6c0bbb7c2f3bec98857975','func002','funcionario2@hotmail.com',1,'employee'),
 ('func003','b4fd4e310410cfa6c31661e66c425345','func003','funcionario3@hotmail.com',1,'employee'),
 ('func004','2698a3f9752cb7a4a438e658a479a569','func004','funcionario4@hotmail.com',0,'employee'),
